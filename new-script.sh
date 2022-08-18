@@ -27,7 +27,7 @@ internet_check () {
 root_check () {
 	if [ $USER != 'root' ]
 	then
-		pacman_update
+		aur_setup	
 	else
 		end_script	
 	fi
@@ -41,12 +41,12 @@ root_error () {
 
 pacman_update () {
 	sudo pacman -Sy && pacman -Syu
-       	aur_setup	
+       	pacman_install	
 }
 
 aur_setup () {
 	pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-	pacman_install
+	pacman_update
 }
 
 # If something goes wrong with the script
