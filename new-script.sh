@@ -5,15 +5,16 @@ launch_script () {
 }
 
 internet_check () {
-	homeuser=$USER
-	sudo su
+	cwd=$(pwd)
   echo '  _____ _   ___ ___ ___ ___     _ ____'
  echo ' |_   _/_\ | _ \   \_ _/ __|___(_)__ /'
    echo '   | |/ _ \|   / |) | |\__ \___| ||_ \'
    echo '   |_/_/ \_\_|_\___/___|___/   |_|___/'
 	echo 
 	echo "Free Software licensed under the GNU General Public License 3.0"	
-   echo && sleep 2	
+   echo && sleep 2
+   	read -p "Type the user you wish to install Tardis for: " selected_username
+	echo
 	read -p "Can you confirm you're connected to the internet and want to go ahead with the installer? [y/n] " internet
 	if [ $internet == 'y' ] || [ $internet == 'Y' ]
 	then
@@ -44,12 +45,10 @@ pacman_install () {
 
 # Setup for WM and utilities
 wm_customise () {
-	rm -rf /home/$homeuser/.config
-	mkdir -p /home/$homeuser/.config/i3 && mkdir -p /home/$homeuser/.config/polybar
-	cp -r config/i3/config /home/$homeuser/.config/i3
-	cp -r config/polybar/config.ini /home/$homeuser/.config/polybar
-	cp -r 'config/gtk-2.0' /home/$homeuser/.config
-	cp -r 'config/gtk-3.0' /home/$homeuser/.config
+	cp -r $cwd/config/i3 /home/$selected_username/.config/
+	cp -r $cwd/config/polybar /home/$selected_username/.config/
+	cp -r $cwd/config/gtk-2.0 home/$selected_username/.config/
+	cp -r $cwd/config/gtk-3.0 home/$selected_username/.config/
 	end_of_install
 }
 

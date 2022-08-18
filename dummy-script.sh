@@ -1,4 +1,4 @@
 #!/bin/bash
 
-hello=$USER
-echo $hello
+cwd=$(pwd)
+echo $cwd
