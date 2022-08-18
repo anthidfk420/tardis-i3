@@ -10,12 +10,12 @@ internet_check () {
 	echo && echo "All of the dotfiles are included in this script, but avoid modifying them until the install is complete."
 	echo && sleep 2
 	read -p "Can you confirm you're connected to the internet? [y/n] " internet
-	if [ $internet == 'y' ] || [ $internet == 'Y' ]
-	then
+	#if [ $internet == 'y' ] || [ $internet == 'Y' ]
+	#then
 		root_permission
-	else
-		exit	
-	fi
+	#else
+	#	exit	
+	#fi
 }
 
 # Requesting root privileges
