@@ -10,12 +10,12 @@ internet_check () {
 	echo && echo "All of the dotfiles are included in this script, but avoid modifying them until the install is complete."
 	echo && sleep 2
 	read -p "Can you confirm you're connected to the internet and want to go ahead with the installer? [y/n] " internet
-	#if [ $internet == 'y' ] || [ $internet == 'Y' ]
-	#then
+	if [ $internet == 'y' ] || [ $internet == 'Y' ]
+	then
 		root_check	
-	#else
-	#	exit	
-	#fi
+	else
+			
+	fi
 }
 
 # Requesting root privileges
@@ -60,9 +60,9 @@ pacman_install () {
 
 # Setup for WM and utilities
 wm_customise () {
-	mkdir -p $HOME/.config/i3
-	cp $HOME/tardis-i3/config/i3/config $HOME/.config/i3
-	cp $HOME/tardis-i3/config/polybar/config.ini $HOME/.config/polybar
+	mkdir -p .config/i3 && mkdir -p .config/polybar
+	cp tardis-i3/config/i3/config .config/i3
+	cp tardis-i3/config/polybar/config.ini .config/polybar
 }
 
 # What causes the script to run
