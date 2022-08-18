@@ -31,7 +31,7 @@ root_check () {
 
 root_error () {
 	echo
-	echo "Install failed, please do not run script as sudo."
+	echo "Please run this script as sudo."
 	exit
 }
 
