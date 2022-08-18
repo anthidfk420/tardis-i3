@@ -20,8 +20,7 @@ internet_check () {
 
 # Requesting root privileges
 root_permission () {
-	echo "Sudo privileges are required for the install. Please type your password." && echo
-	sudo su && pacman_update 
+	pacman_update 
 }
 
 pacman_update () {
@@ -30,10 +29,8 @@ pacman_update () {
 }
 
 aur_setup () {
-	pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay-bin.git
-	cd yay-bin
-	makepkg -si || end_script
-       	pacman_install
+       	# AUR setup is being skipped because makepkg cannot be run as root.
+	pacman_install
 }
 
 # If something goes wrong with the script
@@ -47,6 +44,7 @@ end_script () {
 pacman_install () {
 	pacman -S i3 polybar ttf-fira-code ttf-fira-sans sddm noto-fonts noto-fonts-cjk nitrogen wireplumber pipewire pipewire-pulse pavucontrol xfce4-terminal network-manager-applet chromium vim xorg --noconfirm --needed
 	systemctl enable sddm
+	reboot
 }
 
 # What causes the script to run
