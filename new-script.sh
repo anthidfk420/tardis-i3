@@ -6,7 +6,7 @@ launch_script () {
 
 internet_check () {
 	homeuser=$USER
-
+	sudo su
   echo '  _____ _   ___ ___ ___ ___     _ ____'
  echo ' |_   _/_\ | _ \   \_ _/ __|___(_)__ /'
    echo '   | |/ _ \|   / |) | |\__ \___| ||_ \'
@@ -17,36 +17,15 @@ internet_check () {
 	read -p "Can you confirm you're connected to the internet and want to go ahead with the installer? [y/n] " internet
 	if [ $internet == 'y' ] || [ $internet == 'Y' ]
 	then
-		root_check	
+		pacman_update
 	else
 		end_script	
 	fi
-}
-
-# Requesting root privileges
-root_check () {
-	if [ $USER != 'root' ]
-	then
-		aur_setup	
-	else
-		end_script	
-	fi
-}
-
-root_error () {
-	echo
-	echo "Install failed, please do not run script as sudo."
-	exit
 }
 
 pacman_update () {
-	sudo pacman -Sy && pacman -Syu
+	pacman -Sy && pacman -Syu
        	pacman_install	
-}
-
-aur_setup () {
-	pacman -S --needed git base-devel && git clone https://aur.archlinux.org/yay.git && cd yay && makepkg -si
-	pacman_update
 }
 
 # If something goes wrong with the script
