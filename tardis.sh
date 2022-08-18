@@ -53,9 +53,16 @@ end_script () {
 
 # Installing packages
 pacman_install () {
-	pacman -S i3 dmenu polybar ttf-fira-code ttf-fira-sans sddm noto-fonts noto-fonts-cjk nitrogen wireplumber pipewire pipewire-pulse pavucontrol xfce4-terminal network-manager-applet chromium vim xorg --noconfirm --needed
+	pacman -S i3 dmenu polybar ttf-fira-code ttf-fira-sans sddm noto-fonts noto-fonts-cjk nitrogen wireplumber pipewire pipewire-pulse pavucontrol xfce4-terminal network-manager-applet chromium vim --noconfirm --needed
 	systemctl enable sddm
-	reboot
+	wm_customise
+}
+
+# Setup for WM and utilities
+wm_customise () {
+	mkdir -p $HOME/.config/i3
+	cp $HOME/tardis-i3/config/i3/config $HOME/.config/i3
+	cp $HOME/tardis-i3/config/polybar/config.ini $HOME/.config/polybar
 }
 
 # What causes the script to run
