@@ -5,6 +5,7 @@ launch_script () {
 }
 
 internet_check () {
+	homeuser=$USER
 	echo "Welcome to TARDIS, a utility for Arch Linux that automatically installs and configures a graphical environment based on i3wm." 
 	sleep 2
 	echo && echo "All of the dotfiles are included in this script, but avoid modifying them until the install is complete."
@@ -35,7 +36,7 @@ root_error () {
 }
 
 pacman_update () {
-	pacman -Sy && pacman -Syu
+	sudo pacman -Sy && pacman -Syu
        	aur_setup	
 }
 
@@ -60,9 +61,9 @@ pacman_install () {
 
 # Setup for WM and utilities
 wm_customise () {
-	mkdir -p .config/i3 && mkdir -p .config/polybar
-	cp tardis-i3/config/i3/config .config/i3
-	cp tardis-i3/config/polybar/config.ini .config/polybar
+	mkdir -p /home/$homeuser/.config/i3 && mkdir -p /home/$homeuser/.config/polybar
+	cp config/i3/config /home/$homeuser/.config/i3
+	cp config/polybar/config.ini /home/$homeuser/.config/polybar
 }
 
 # What causes the script to run

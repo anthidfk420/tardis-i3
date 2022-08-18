@@ -1,3 +1,4 @@
 #!/bin/bash
 
-echo $USER
+hello=$USER
+echo $hello
