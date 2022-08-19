@@ -47,8 +47,9 @@ pacman_install () {
 wm_customise () {
 	cp -r $cwd/config/i3 /home/$selected_username/.config/
 	cp -r $cwd/config/polybar /home/$selected_username/.config/
-	cp -r $cwd/config/gtk-2.0 home/$selected_username/.config/
-	cp -r $cwd/config/gtk-3.0 home/$selected_username/.config/
+	cp -r $cwd/config/gtk-2.0 /home/$selected_username/.config/
+	cp -r $cwd/config/gtk-3.0 /home/$selected_username/.config/
+	mv $cwd/wallpapers /home/$selected_username/ && cp -r $cw/config/nitrogen /home/$selected_username/.config/
 	end_of_install
 }
 

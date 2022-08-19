@@ -48,7 +48,7 @@ aur_setup () {
 # If something goes wrong with the script
 end_script () {
 	echo
-	echo "An error has occurred and the script was unable to install successfully."
+	echo "The script was unable to install successfully."
 	exit
 }
 
